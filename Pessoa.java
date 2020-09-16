@@ -5,6 +5,14 @@ public class Pessoa {
     private String materia;
     private String turno;
 
+    public Pessoa(String nome, int cpf, int matricula, String materia, String turno) {
+        setNome(nome);
+        setCpf(cpf);
+        setMateria(materia);
+        setMatricula(matricula);
+        setTurno(turno);
+    }
+
     public String getNome() {
         return nome;
     }
@@ -44,4 +52,6 @@ public class Pessoa {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    
 }
