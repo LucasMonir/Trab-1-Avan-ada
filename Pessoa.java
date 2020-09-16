@@ -1,47 +1,47 @@
 public class Pessoa {
-    private static int matricula;
-    private static int cpf;
-    private static String nome;
-    private static String materia;
-    private static String turno;
+    private String nome;
+    private int cpf;
+    private int matricula;
+    private String materia;
+    private String turno;
 
-    public static int getMatricula() {
-        return matricula;
-    }
-
-    public static String getTurno() {
-        return turno;
-    }
-
-    public static void setTurno(String turno) {
-        Pessoa.turno = turno;
-    }
-
-    public static String getMateria() {
-        return materia;
-    }
-
-    public static void setMateria(String materia) {
-        Pessoa.materia = materia;
-    }
-
-    public static String getNome() {
+    public String getNome() {
         return nome;
     }
 
-    public static void setNome(String nome) {
-        Pessoa.nome = nome;
+    public String getTurno() {
+        return turno;
     }
 
-    public static int getCpf() {
+    public void setTurno(String turno) {
+        this.turno = turno;
+    }
+
+    public String getMateria() {
+        return materia;
+    }
+
+    public void setMateria(String materia) {
+        this.materia = materia;
+    }
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+
+    public int getCpf() {
         return cpf;
     }
 
-    public static void setCpf(int cpf) {
-        Pessoa.cpf = cpf;
+    public void setCpf(int cpf) {
+        this.cpf = cpf;
     }
 
-    public static void setMatricula(int matricula) {
-        Pessoa.matricula = matricula;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }
