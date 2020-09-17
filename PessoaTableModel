@@ -34,7 +34,7 @@ public class PessoaTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 3;
+        return 5;
     }
 
     public String getColumnName(int columnIndex) {
