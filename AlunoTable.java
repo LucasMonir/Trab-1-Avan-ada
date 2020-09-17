@@ -16,7 +16,8 @@ public class AlunoTable extends JFrame {
 
         //lista de pessoas
         ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
-        pessoas.add(new Pessoa("Benevenuto", 1234, 213123, "Artes", "Noturno")); 
+        pessoas.add(new Pessoa("Benevenuto", 1234, 213123, "Teologia", "Noturno")); 
+        pessoas.add(new Pessoa("Cleito", 12213, 2112323, "S.I", "Diurno")); 
 
         //layout
         setLayout(new BorderLayout());
