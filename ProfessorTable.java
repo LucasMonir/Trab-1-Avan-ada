@@ -12,11 +12,12 @@ public class ProfessorTable extends JFrame {
     private JTextField turno = new JTextField();
 
     public ProfessorTable() {
-        super("Alunos matriculados: ");
+        super("Professores registrados: ");
 
         //lista de pessoas
         ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
-        pessoas.add(new Pessoa("Benevenuto", 1234, 213123, "Artes", "Noturno")); 
+        pessoas.add(new Pessoa("Cabo", 1234, 213123, "Teologia", "Noturno")); 
+        pessoas.add(new Pessoa("Rogério", 12213, 2112323, "S.I", "Diurno")); 
 
         //layout
         setLayout(new BorderLayout());
@@ -45,39 +46,20 @@ public class ProfessorTable extends JFrame {
         //modelo de tabela pra seguir como Pessoa
         PessoaTableModel ptm = new PessoaTableModel();
         ptm.setPessoas(pessoas);
-        JTable alunoTable = new JTable();
-        alunoTable.setModel(ptm);
+        JTable professorTable = new JTable();
+        professorTable.setModel(ptm);
 
         //botão de registrar e ação de registrar
         JButton registrar = new JButton("Registrar");
+        
+        //cor do jbutton
+        Color cor = registrar.getBackground();
 
-        registrar.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ptm.addPessoa(registraPessoas(nome.getText(), Integer.parseInt(cpf.getText()), Integer.parseInt(matricula.getText()), materia.getText(), turno.getText()));      
-                cleaner();
-            }
-            
-        });
-
-        //botao de editar, depois de alterar campo, double click salva progresso
-        JButton editar = new JButton("Editar");
-
-        editar.addMouseListener(new MouseListener() {
+        registrar.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(e.getClickCount()==2){
-                    ptm.getPessoa(alunoTable.getSelectedRow()).setNome((nome.getText()));
-                    ptm.getPessoa(alunoTable.getSelectedRow()).setCpf(Integer.parseInt(cpf.getText()));
-                    ptm.getPessoa(alunoTable.getSelectedRow()).setMatricula(Integer.parseInt(matricula.getText()));
-                    ptm.getPessoa(alunoTable.getSelectedRow()).setMateria(materia.getText());
-                    ptm.getPessoa(alunoTable.getSelectedRow()).setTurno(turno.getText());
-
-                    ptm.fireTableDataChanged();
-                    
-                    cleaner();
-                }
+                ptm.addPessoa(registraPessoas(nome.getText(), Integer.parseInt(cpf.getText()), Integer.parseInt(matricula.getText()), materia.getText(), turno.getText()));      
+                cleaner();
             }
 
             @Override
@@ -94,33 +76,92 @@ public class ProfessorTable extends JFrame {
 
             @Override
             public void mouseEntered(MouseEvent e) {
+                registrar.setBackground(Color.CYAN);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                registrar.setBackground(cor);
+            }
+        });
+
+        //botao de editar, depois de alterar campo, double click salva progresso
+        JButton editar = new JButton("Editar");
+
+        editar.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                ptm.getPessoa(professorTable.getSelectedRow()).setNome((nome.getText()));
+                ptm.getPessoa(professorTable.getSelectedRow()).setCpf(Integer.parseInt(cpf.getText()));
+                ptm.getPessoa(professorTable.getSelectedRow()).setMatricula(Integer.parseInt(matricula.getText()));
+                ptm.getPessoa(professorTable.getSelectedRow()).setMateria(materia.getText());
+                ptm.getPessoa(professorTable.getSelectedRow()).setTurno(turno.getText());
+                ptm.fireTableDataChanged();
+                    
+                cleaner();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
                 // TODO Auto-generated method stub
 
             }
 
             @Override
-            public void mouseExited(MouseEvent e) {
+            public void mouseReleased(MouseEvent e) {
                 // TODO Auto-generated method stub
 
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                editar.setBackground(Color.CYAN);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                editar.setBackground(cor);
             }
         });
 
         //limpa os campos
         JButton cancelar = new JButton("Cancelar");
 
-        cancelar.addActionListener(new ActionListener() {
+        cancelar.addMouseListener(new MouseListener() {
             @Override
-            public void actionPerformed(ActionEvent arg0) {
+            public void mouseClicked(MouseEvent e) {
                 cleaner();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                cancelar.setBackground(Color.CYAN);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                cancelar.setBackground(cor);
             }
         });
 
         //seleciona os itens e mostra nas labels
-        alunoTable.addMouseListener(new MouseListener() {
+        professorTable.addMouseListener(new MouseListener() {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                Pessoa p = ptm.getPessoa(alunoTable.getSelectedRow());
+                Pessoa p = ptm.getPessoa(professorTable.getSelectedRow());
                 nome.setText(p.getNome());
                 cpf.setText("" + p.getCpf());
                 matricula.setText("" + p.getMatricula());
@@ -143,14 +184,14 @@ public class ProfessorTable extends JFrame {
         });
 
         //deleta 
-        alunoTable.addKeyListener(new KeyListener(){
+        professorTable.addKeyListener(new KeyListener(){
 
 			@Override
 			public void keyTyped(KeyEvent e) {}
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				ptm.dellPessoa(alunoTable.getSelectedRow());
+				ptm.dellPessoa(professorTable.getSelectedRow());
                 cleaner();
 			}
 
@@ -165,7 +206,7 @@ public class ProfessorTable extends JFrame {
 
         getContentPane().add(p1, BorderLayout.NORTH);
 
-        add(new JScrollPane(alunoTable), BorderLayout.CENTER);
+        add(new JScrollPane(professorTable), BorderLayout.CENTER);
         pack();
         setVisible(true);
     }
@@ -184,6 +225,6 @@ public class ProfessorTable extends JFrame {
     }
 
     public static void main(String[] args) {
-        new AlunoTable();
+        new ProfessorTable();
     }
 }
