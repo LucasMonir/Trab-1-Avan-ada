@@ -1,9 +1,9 @@
 package Aluno;
-import Pessoa.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.*;
 import java.awt.*;
+import Pessoa.*;
 
 public class AlunoTable extends JFrame {
     private static final long serialVersionUID = 1L;
@@ -33,10 +33,10 @@ public class AlunoTable extends JFrame {
         p1.add(new JLabel("Nome: "));
         p1.add(nome);
 
-        p1.add(new JLabel("CPF: "));
+        p1.add(new JLabel("CPF (Numérico): "));
         p1.add(cpf);
 
-        p1.add(new JLabel("Matricula: "));
+        p1.add(new JLabel("Matricula (Numérico): "));
         p1.add(matricula);
 
         p1.add(new JLabel("Matéria: "));
