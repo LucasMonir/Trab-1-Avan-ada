@@ -1,6 +1,9 @@
 package Aluno;
 import javax.swing.*;
+import javax.swing.text.NumberFormatter;
+
 import java.awt.event.*;
+import java.text.NumberFormat;
 import java.util.*;
 import java.awt.*;
 import Pessoa.*;
@@ -15,7 +18,7 @@ public class AlunoTable extends JFrame {
 
     public AlunoTable() {
         super("Alunos matriculados: ");
-
+        
         setPreferredSize(new Dimension(400,300));
 
         ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
@@ -24,6 +27,30 @@ public class AlunoTable extends JFrame {
 
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        cpf.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+              char letra = e.getKeyChar();
+              if (!((letra >= '0') && (letra <= '9') ||
+                 (letra == KeyEvent.VK_BACK_SPACE) ||
+                 (letra == KeyEvent.VK_DELETE))) {
+                getToolkit().beep();
+                e.consume();
+              }
+            }
+        }); 
+
+        matricula.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+              char letra = e.getKeyChar();
+              if (!((letra >= '0') && (letra <= '9') ||
+                 (letra == KeyEvent.VK_BACK_SPACE) ||
+                 (letra == KeyEvent.VK_DELETE))) {
+                getToolkit().beep();
+                e.consume();
+              }
+            }
+        }); 
 
         JPanel p1 = new JPanel();
         JPanel p2 = new JPanel();
@@ -34,6 +61,7 @@ public class AlunoTable extends JFrame {
         p1.add(nome);
 
         p1.add(new JLabel("CPF (Numérico): "));
+        
         p1.add(cpf);
 
         p1.add(new JLabel("Matricula (Numérico): "));
