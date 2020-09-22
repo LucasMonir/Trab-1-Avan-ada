@@ -57,8 +57,19 @@ public class AlunoTable extends JFrame {
         registrar.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                ptm.addPessoa(registraPessoas(nome.getText(), Integer.parseInt(cpf.getText()), Integer.parseInt(matricula.getText()), materia.getText(), turno.getText()));      
-                cleaner();
+                int resposta = JOptionPane.showConfirmDialog(null, "Confirmar dados: Nome: "+ nome.getText() + "\n"
+                +"CPF: " + cpf.getText() + "\n"
+                +"Matricula: " + matricula.getText() + "\n"
+                +"Matéria: " + materia.getText() + "\n"
+                +"Turno: " + turno.getText() + "\n");
+
+                if (resposta == 0){
+                    ptm.addPessoa(registraPessoas(nome.getText(), Integer.parseInt(cpf.getText()), Integer.parseInt(matricula.getText()), materia.getText(), turno.getText()));      
+                    cleaner();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Cancelado!", "Operação cancelada", JOptionPane.WARNING_MESSAGE);
+                }
+        
             }
 
             @Override
@@ -83,14 +94,24 @@ public class AlunoTable extends JFrame {
         editar.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                ptm.getPessoa(alunoTable.getSelectedRow()).setNome((nome.getText()));
-                ptm.getPessoa(alunoTable.getSelectedRow()).setCpf(Integer.parseInt(cpf.getText()));
-                ptm.getPessoa(alunoTable.getSelectedRow()).setMatricula(Integer.parseInt(matricula.getText()));
-                ptm.getPessoa(alunoTable.getSelectedRow()).setMateria(materia.getText());
-                ptm.getPessoa(alunoTable.getSelectedRow()).setTurno(turno.getText());
-                ptm.fireTableDataChanged();
-                    
-                cleaner();
+                int resposta = JOptionPane.showConfirmDialog(null, "Confirmar dados: Nome: "+ nome.getText() + "\n"
+                +"CPF: " + cpf.getText() + "\n"
+                +"Matricula: " + matricula.getText() + "\n"
+                +"Matéria: " + materia.getText() + "\n"
+                +"Turno: " + turno.getText() + "\n");
+                
+                if (resposta == 0){
+                    ptm.getPessoa(alunoTable.getSelectedRow()).setNome((nome.getText()));
+                    ptm.getPessoa(alunoTable.getSelectedRow()).setCpf(Integer.parseInt(cpf.getText()));
+                    ptm.getPessoa(alunoTable.getSelectedRow()).setMatricula(Integer.parseInt(matricula.getText()));
+                    ptm.getPessoa(alunoTable.getSelectedRow()).setMateria(materia.getText());
+                    ptm.getPessoa(alunoTable.getSelectedRow()).setTurno(turno.getText());
+                    ptm.fireTableDataChanged();
+                        
+                    cleaner();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Cancelado!", "Operação cancelada", JOptionPane.WARNING_MESSAGE);
+                }
             }
 
             @Override
