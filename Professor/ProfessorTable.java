@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.*;
 import java.awt.*;
+import Pessoa.*;
 
 public class ProfessorTable extends JFrame {
     private static final long serialVersionUID = 1L;
