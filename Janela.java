@@ -73,7 +73,7 @@ class Janela extends JFrame{
         p1.add(ok);
 
         try {
-            BufferedImage myPicture = ImageIO.read(new File("E:\\ROOT\\faculdade mano\\4 semestre\\Programação\\trab 1\\unisul.png"));
+            BufferedImage myPicture = ImageIO.read(new File("unisul.png"));
             JLabel picLabel = new JLabel(new ImageIcon(myPicture));
             add(picLabel);
         } catch (Exception e) {
