@@ -16,9 +16,8 @@ public class AlunoTable extends JFrame {
 
     public AlunoTable() {
         super("Alunos matriculados: ");
-        
         setPreferredSize(new Dimension(400,300));
-
+	    
         ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
         pessoas.add(new Pessoa("Benevenuto", 1234, 213123, "Teologia", "Noturno")); 
         pessoas.add(new Pessoa("Cleito", 12213, 2112323, "S.I", "Diurno")); 
