@@ -17,19 +17,16 @@ public class ProfessorTable extends JFrame {
     public ProfessorTable() {
         super("Professores registrados: ");
 
-        //lista de pessoas
         ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
-        pessoas.add(new Pessoa("Cabo", 1234, 213123, "Teologia", "Noturno")); 
+        pessoas.add(new Pessoa("Kleber", 1234, 213123, "Teologia", "Noturno")); 
         pessoas.add(new Pessoa("Rogério", 12213, 2112323, "S.I", "Diurno")); 
 
-        //layout
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //painel que fica td em cima 
         JPanel p1 = new JPanel();
 
-        p1.setLayout(new GridLayout(0, 2));
+        p1.setLayout(new GridLayout(0, 1));
 
         p1.add(new JLabel("Nome: "));
         p1.add(nome);
@@ -37,7 +34,7 @@ public class ProfessorTable extends JFrame {
         p1.add(new JLabel("CPF: "));
         p1.add(cpf);
 
-        p1.add(new JLabel("Matricula: "));
+        p1.add(new JLabel("Matricula do Profesor: "));
         p1.add(matricula);
 
         p1.add(new JLabel("Matéria: "));
@@ -46,16 +43,13 @@ public class ProfessorTable extends JFrame {
         p1.add(new JLabel("Turno: "));
         p1.add(turno);
 
-        //modelo de tabela pra seguir como Pessoa
         PessoaTableModel ptm = new PessoaTableModel();
         ptm.setPessoas(pessoas);
         JTable professorTable = new JTable();
         professorTable.setModel(ptm);
 
-        //botão de registrar e ação de registrar
-        JButton registrar = new JButton("Registrar");
+        JButton registrar = new JButton("Registrar Professor");
         
-        //cor do jbutton
         Color cor = registrar.getBackground();
 
         registrar.addMouseListener(new MouseListener() {
@@ -67,19 +61,17 @@ public class ProfessorTable extends JFrame {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                // TODO Auto-generated method stub
 
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                // TODO Auto-generated method stub
 
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                registrar.setBackground(Color.CYAN);
+                registrar.setBackground(Color.GRAY);
             }
 
             @Override
@@ -88,7 +80,6 @@ public class ProfessorTable extends JFrame {
             }
         });
 
-        //botao de editar, depois de alterar campo, double click salva progresso
         JButton editar = new JButton("Editar");
 
         editar.addMouseListener(new MouseListener() {
@@ -106,19 +97,17 @@ public class ProfessorTable extends JFrame {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                // TODO Auto-generated method stub
 
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                // TODO Auto-generated method stub
 
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                editar.setBackground(Color.CYAN);
+                editar.setBackground(Color.GRAY);
             }
 
             @Override
@@ -127,7 +116,6 @@ public class ProfessorTable extends JFrame {
             }
         });
 
-        //limpa os campos
         JButton cancelar = new JButton("Cancelar");
 
         cancelar.addMouseListener(new MouseListener() {
@@ -138,19 +126,17 @@ public class ProfessorTable extends JFrame {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                // TODO Auto-generated method stub
 
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                // TODO Auto-generated method stub
 
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                cancelar.setBackground(Color.CYAN);
+                cancelar.setBackground(Color.GRAY);
             }
 
             @Override
@@ -159,7 +145,6 @@ public class ProfessorTable extends JFrame {
             }
         });
 
-        //seleciona os itens e mostra nas labels
         professorTable.addMouseListener(new MouseListener() {
 
             @Override
@@ -186,7 +171,6 @@ public class ProfessorTable extends JFrame {
 
         });
 
-        //deleta 
         professorTable.addKeyListener(new KeyListener(){
 
 			@Override
