@@ -1,6 +1,7 @@
 package Professor;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.event.*;
 import java.util.*;
 import java.awt.*;
@@ -24,7 +25,23 @@ public class ProfessorTable extends JFrame {
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        JMenuBar m1Bar = new JMenuBar();
+        setJMenuBar(m1Bar);
+        JMenu menu = new JMenu("Configurações");
+        m1Bar.add(menu);
+        menu.setMnemonic(KeyEvent.VK_C);
+
+        ButtonGroup grupoBotao = new ButtonGroup();
+        JMenuItem cb1JMenuItem = new JCheckBoxMenuItem("Permissões de Administrador");
+        menu.add(cb1JMenuItem);
+        grupoBotao.add(cb1JMenuItem);
+
+        JMenuItem newProfessor = new JMenuItem("Novo Professor");
+        menu.add(newProfessor);
+
+
         JPanel p1 = new JPanel();
+        p1.setBorder(new EmptyBorder( 20, 20, 20 ,20));
 
         p1.setLayout(new GridLayout(0, 1));
 
@@ -47,6 +64,8 @@ public class ProfessorTable extends JFrame {
         ptm.setPessoas(pessoas);
         JTable professorTable = new JTable();
         professorTable.setModel(ptm);
+
+        professorTable.setBorder(new EmptyBorder( 20, 20, 20 ,20));
 
         JButton registrar = new JButton("Registrar Professor");
         
