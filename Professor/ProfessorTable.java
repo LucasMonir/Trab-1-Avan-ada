@@ -1,4 +1,4 @@
-package Professor;
+package Profs;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -23,7 +23,7 @@ public class ProfessorTable extends JFrame {
         pessoas.add(new Pessoa("Rogério", 12213, 2112323, "S.I", "Diurno")); 
 
         setLayout(new BorderLayout());
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
 
         JMenuBar m1Bar = new JMenuBar();
         setJMenuBar(m1Bar);
@@ -38,7 +38,6 @@ public class ProfessorTable extends JFrame {
 
         JMenuItem newProfessor = new JMenuItem("Novo Professor");
         menu.add(newProfessor);
-
 
         JPanel p1 = new JPanel();
         p1.setBorder(new EmptyBorder( 20, 20, 20 ,20));
@@ -214,7 +213,7 @@ public class ProfessorTable extends JFrame {
 
         add(new JScrollPane(professorTable), BorderLayout.CENTER);
         pack();
-        setVisible(true);
+        setVisible(false);
     }
 
     public Pessoa registraPessoas(String nome, int cpf, int matricula, String materia, String turno){
@@ -228,9 +227,5 @@ public class ProfessorTable extends JFrame {
         materia.setText("");
         matricula.setText("");
         turno.setText("");
-    }
-
-    public static void main(String[] args) {
-        new ProfessorTable();
     }
 }
