@@ -12,6 +12,7 @@ public class AlunoTable extends JFrame {
     private JTextField materia = new JTextField();
     private JTextField matricula = new JTextField();
     private JTextField turno = new JTextField();
+    private PessoaTableModel ptm = new PessoaTableModel();
 
     public AlunoTable() {
         super("Alunos matriculados: ");
@@ -84,7 +85,6 @@ public class AlunoTable extends JFrame {
         p1.add(materia);
         p1.add(noturno);
 
-        PessoaTableModel ptm = new PessoaTableModel();
         ptm.setPessoas(pessoas);
         JTable alunoTable = new JTable();
         alunoTable.setModel(ptm);
@@ -267,5 +267,9 @@ public class AlunoTable extends JFrame {
             }
         }
         return null;
+    }
+
+    public PessoaTableModel getPtm(){
+        return ptm;
     }
 }

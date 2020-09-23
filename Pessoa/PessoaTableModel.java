@@ -28,6 +28,10 @@ public class PessoaTableModel extends AbstractTableModel {
         return pessoas.get(index);
     }
 
+    public ArrayList getLista(){
+        return this.pessoas;
+    }
+
     @Override
     public int getRowCount() {
         return pessoas.size();
