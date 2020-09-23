@@ -40,7 +40,6 @@ public class ProfessorTable extends JFrame {
         JMenuItem newProfessor = new JMenuItem("Novo Professor");
         menu.add(newProfessor);
 
-
         JPanel p1 = new JPanel();
         p1.setBorder(new EmptyBorder( 20, 20, 20 ,20));
 

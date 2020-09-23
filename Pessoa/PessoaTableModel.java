@@ -28,7 +28,7 @@ public class PessoaTableModel extends AbstractTableModel {
         return pessoas.get(index);
     }
 
-    public ArrayList getLista(){
+    public ArrayList<Pessoa> getLista(){
         return this.pessoas;
     }
 

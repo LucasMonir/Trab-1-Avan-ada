@@ -8,6 +8,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 class Janela extends JFrame{
+    private static final long serialVersionUID = 1L;
+
     static AlunoTable at = new AlunoTable();
     static ProfessorTable pt = new ProfessorTable();
     
@@ -16,7 +18,6 @@ class Janela extends JFrame{
         
         setPreferredSize(new Dimension(400,300));
         setResizable(false);
-
 
         String[] opcoesMenu = {"", "Alunos", "Professores"};
         JComboBox<String> selecaoMenu = new JComboBox<>(opcoesMenu);
@@ -33,8 +34,6 @@ class Janela extends JFrame{
         p1.add(l2);
         
         p1.add(new JLabel("Selecione opção a ser exibida: "));
-
-        
 
         p1.add(selecaoMenu);
         
