@@ -19,6 +19,8 @@ public class ProfessorTable extends JFrame {
     public ProfessorTable() {
         super("Professores registrados: ");
 
+        setPreferredSize(new Dimension(600,500));
+
         ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
         pessoas.add(new Pessoa("Kleber", 1234, 213123, "Teologia", "Noturno")); 
         pessoas.add(new Pessoa("Rogério", 12213, 2112323, "S.I", "Diurno")); 
