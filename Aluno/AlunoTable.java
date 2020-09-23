@@ -21,9 +21,9 @@ public class AlunoTable extends JFrame {
         ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
         pessoas.add(new Pessoa("Benevenuto", 1234, 213123, "Teologia", "Noturno")); 
         pessoas.add(new Pessoa("Cleito", 12213, 2112323, "S.I", "Diurno")); 
-
+        
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         setLayout(new BorderLayout());
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         cpf.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
@@ -244,7 +244,7 @@ public class AlunoTable extends JFrame {
 
         add(new JScrollPane(alunoTable), BorderLayout.CENTER);
         pack();
-        setVisible(true);
+        setVisible(false);
     }
 
     public Pessoa registraPessoas(String nome, int cpf, int matricula, String materia, String turno){
@@ -267,9 +267,5 @@ public class AlunoTable extends JFrame {
             }
         }
         return null;
-    }
-
-    public static void main(String[] args) {
-        new AlunoTable();
     }
 }
