@@ -52,23 +52,37 @@ public class AlunoTable extends JFrame {
         JPanel p1 = new JPanel();
         JPanel p2 = new JPanel();
 
-        p1.setLayout(new GridLayout(0, 2));
+        p1.setLayout(new GridLayout(0, 3));
+
+        JRadioButton noturno = new JRadioButton("Noturno");
+        noturno.setActionCommand("Noturno");
+        
+        JRadioButton matutino = new JRadioButton("Matutino");
+        noturno.setActionCommand("Matutino");
+
+        JRadioButton vespertino = new JRadioButton("Vespertino");
+        noturno.setActionCommand("Vespertino");
+        
+        ButtonGroup group = new ButtonGroup();
+        group.add(matutino);
+        group.add(vespertino);
+        group.add(noturno);
 
         p1.add(new JLabel("Nome: "));
         p1.add(nome);
+        p1.add(new JLabel("Turno: "));
 
         p1.add(new JLabel("CPF (Numérico): "));
-        
         p1.add(cpf);
+        p1.add(matutino);
 
         p1.add(new JLabel("Matricula (Numérico): "));
         p1.add(matricula);
+        p1.add(vespertino);
 
         p1.add(new JLabel("Matéria: "));
         p1.add(materia);
-
-        p1.add(new JLabel("Turno: "));
-        p1.add(turno);
+        p1.add(noturno);
 
         PessoaTableModel ptm = new PessoaTableModel();
         ptm.setPessoas(pessoas);
@@ -82,19 +96,19 @@ public class AlunoTable extends JFrame {
         registrar.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+
                 int resposta = JOptionPane.showConfirmDialog(null, "Confirmar dados: Nome: "+ nome.getText() + "\n"
                 +"CPF: " + cpf.getText() + "\n"
                 +"Matricula: " + matricula.getText() + "\n"
                 +"Matéria: " + materia.getText() + "\n"
-                +"Turno: " + turno.getText() + "\n");
-
+                +"Turno: " + getSelectedButton(group)  + "\n");
+                
                 if (resposta == 0){
-                    ptm.addPessoa(registraPessoas(nome.getText(), Integer.parseInt(cpf.getText()), Integer.parseInt(matricula.getText()), materia.getText(), turno.getText()));      
+                    ptm.addPessoa(registraPessoas(nome.getText(), Integer.parseInt(cpf.getText()), Integer.parseInt(matricula.getText()), materia.getText(), getSelectedButton(group)));      
                     cleaner();
                 } else {
                     JOptionPane.showMessageDialog(null, "Cancelado!", "Operação cancelada", JOptionPane.WARNING_MESSAGE);
                 }
-        
             }
 
             @Override
@@ -123,14 +137,14 @@ public class AlunoTable extends JFrame {
                 +"CPF: " + cpf.getText() + "\n"
                 +"Matricula: " + matricula.getText() + "\n"
                 +"Matéria: " + materia.getText() + "\n"
-                +"Turno: " + turno.getText() + "\n");
+                +"Turno: " + getSelectedButton(group) + "\n");
                 
                 if (resposta == 0){
                     ptm.getPessoa(alunoTable.getSelectedRow()).setNome((nome.getText()));
                     ptm.getPessoa(alunoTable.getSelectedRow()).setCpf(Integer.parseInt(cpf.getText()));
                     ptm.getPessoa(alunoTable.getSelectedRow()).setMatricula(Integer.parseInt(matricula.getText()));
                     ptm.getPessoa(alunoTable.getSelectedRow()).setMateria(materia.getText());
-                    ptm.getPessoa(alunoTable.getSelectedRow()).setTurno(turno.getText());
+                    ptm.getPessoa(alunoTable.getSelectedRow()).setTurno(getSelectedButton(group));
                     ptm.fireTableDataChanged();
                         
                     cleaner();
@@ -190,7 +204,7 @@ public class AlunoTable extends JFrame {
                 cpf.setText("" + p.getCpf());
                 matricula.setText("" + p.getMatricula());
                 materia.setText(p.getMateria());
-                turno.setText(p.getTurno());
+                turno.setText(getSelectedButton(group));
             }
 
             @Override
@@ -225,10 +239,8 @@ public class AlunoTable extends JFrame {
 
         p1.add(registrar);
         p1.add(cancelar);
+        p1.add(editar);
         getContentPane().add(p1, BorderLayout.NORTH);
-        
-        p2.add(editar);
-        getContentPane().add(p2, BorderLayout.AFTER_LAST_LINE);
 
         add(new JScrollPane(alunoTable), BorderLayout.CENTER);
         pack();
@@ -245,7 +257,16 @@ public class AlunoTable extends JFrame {
         cpf.setText("");
         materia.setText("");
         matricula.setText("");
-        turno.setText("");
+    }
+
+    public String getSelectedButton(ButtonGroup btg){  
+        for (Enumeration<AbstractButton> buttons = btg.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+            if (button.isSelected()) {
+                return button.getText();
+            }
+        }
+        return null;
     }
 
     public static void main(String[] args) {
